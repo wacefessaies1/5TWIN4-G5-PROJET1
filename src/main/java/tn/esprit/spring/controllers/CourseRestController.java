@@ -3,6 +3,9 @@ package tn.esprit.spring.controllers;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import tn.esprit.spring.entities.Course;
 import tn.esprit.spring.entities.TypeCourse;
@@ -20,9 +23,11 @@ public class CourseRestController {
 
     @Operation(description = "Add Course")
     @PostMapping("/add")
-    public Course addCourse(@RequestBody Course course){
-        return  courseServices.addCourse(course);
+    public ResponseEntity<Course> addCourse(@RequestBody Course course){
+        Course addedCourse = courseServices.addCourse(course);
+        return ResponseEntity.status(HttpStatus.CREATED).body(addedCourse);
     }
+
 
     @Operation(description = "Retrieve all Courses")
     @GetMapping("/all")

@@ -1,6 +1,9 @@
 package tn.esprit.spring.services;
 
 import lombok.AllArgsConstructor;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import tn.esprit.spring.entities.Course;
 import tn.esprit.spring.entities.TypeCourse;
@@ -20,8 +23,10 @@ public class CourseServicesImpl implements  ICourseServices{
 
     @Override
     public Course addCourse(Course course) {
-        return courseRepository.save(course);
+        Course addedCourse = courseRepository.save(course);
+        return addedCourse;
     }
+
 
     @Override
     public Course updateCourse(Course course) {

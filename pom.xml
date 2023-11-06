@@ -44,6 +44,13 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
+    <groupId>org.mockito</groupId>
+    <artifactId>mockito-core</artifactId>
+    <version>3.12.4</version> <!-- Remplacez par la version actuelle de Mockito -->
+    <scope>test</scope>
+</dependency>
+
+		<dependency>
 			<groupId>org.springdoc</groupId>
 			<artifactId>springdoc-openapi-ui</artifactId>
 			<version>1.6.12</version>
