@@ -2,6 +2,9 @@ package tn.esprit.spring.services;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import tn.esprit.spring.entities.*;
 import tn.esprit.spring.repositories.ICourseRepository;
@@ -21,6 +24,7 @@ public class RegistrationServicesImpl implements  IRegistrationServices{
     private ISkierRepository skierRepository;
     private ICourseRepository courseRepository;
 
+    private static final Logger log = LoggerFactory.getLogger(RegistrationServicesImpl.class);
 
     @Override
     public Registration addRegistrationAndAssignToSkier(Registration registration, Long numSkier) {

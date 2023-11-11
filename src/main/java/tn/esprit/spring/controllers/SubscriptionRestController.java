@@ -18,7 +18,7 @@ import java.util.Set;
 @RequiredArgsConstructor
 public class SubscriptionRestController {
 
-    private final ISubscriptionServices subscriptionServices;
+    private ISubscriptionServices subscriptionServices;
 
     @Operation(description = "Add Subscription ")
     @PostMapping("/add")

@@ -15,7 +15,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class InstructorRestController {
 
-    private final IInstructorServices instructorServices;
+    private IInstructorServices instructorServices;
 
     @Operation(description = "Add Instructor")
     @PostMapping("/add")

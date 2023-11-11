@@ -35,4 +35,60 @@ public class Course implements Serializable {
 	@OneToMany(mappedBy= "course")
 	Set<Registration> registrations;
 
+	public Long getNumCourse() {
+		return numCourse;
+	}
+
+	public void setNumCourse(Long numCourse) {
+		this.numCourse = numCourse;
+	}
+
+	public int getLevel() {
+		return level;
+	}
+
+	public void setLevel(int level) {
+		this.level = level;
+	}
+
+	public TypeCourse getTypeCourse() {
+		return typeCourse;
+	}
+
+	public void setTypeCourse(TypeCourse typeCourse) {
+		this.typeCourse = typeCourse;
+	}
+
+	public Support getSupport() {
+		return support;
+	}
+
+	public void setSupport(Support support) {
+		this.support = support;
+	}
+
+	public Float getPrice() {
+		return price;
+	}
+
+	public void setPrice(Float price) {
+		this.price = price;
+	}
+
+	public int getTimeSlot() {
+		return timeSlot;
+	}
+
+	public void setTimeSlot(int timeSlot) {
+		this.timeSlot = timeSlot;
+	}
+
+	public Set<Registration> getRegistrations() {
+		return registrations;
+	}
+
+	public void setRegistrations(Set<Registration> registrations) {
+		this.registrations = registrations;
+	}
+
 }

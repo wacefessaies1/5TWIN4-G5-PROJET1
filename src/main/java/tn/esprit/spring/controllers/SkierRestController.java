@@ -16,7 +16,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class SkierRestController {
 
-    private final ISkierServices skierServices;
+    private ISkierServices skierServices;
 
     @Operation(description = "Add Skier")
     @PostMapping("/add")
