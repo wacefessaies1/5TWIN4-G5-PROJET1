@@ -47,6 +47,18 @@ public class Skier implements Serializable {
 	Set<Registration> registrations;
 
 
+	public void setSubscription(Subscription subscription2) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+	public Set<Registration> getRegistrations() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
 
 
 

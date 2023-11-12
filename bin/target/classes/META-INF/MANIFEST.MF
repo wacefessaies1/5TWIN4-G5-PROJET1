@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Built-By: rafra
+Build-Jdk: 17.0.4.1
+Implementation-Title: gestion-station-ski
+Implementation-Version: 1.0
+Implementation-Vendor-Id: tn.esprit.spring
+Implementation-URL: https://spring.io/projects/spring-boot/gestion-stati
+ on-ski
+Created-By: Maven Integration for Eclipse
+
