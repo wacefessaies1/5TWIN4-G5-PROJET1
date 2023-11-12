@@ -29,7 +29,7 @@ import tn.esprit.spring.services.InstructorServicesImpl;
 @SpringBootTest
 public class InstructorServiceMockitoTest {
 	
-	private static final Logger log = LoggerFactory.getLogger(InstructorServiceImplTest.class);
+	private static final Logger log = LoggerFactory.getLogger(InstructorServiceMockitoTest.class);
 
 	//pour isoler la dépendence entre les classes service et repo = pas de cnx avec BD pour plus de rapidité
 	@Mock
