@@ -75,6 +75,7 @@
 							<artifactId>lombok</artifactId>
 						</exclude>
 					</excludes>
+					<finalName>5TWIN4-G5-Projet1</finalName>
 				</configuration>
 			</plugin>
 		</plugins>
