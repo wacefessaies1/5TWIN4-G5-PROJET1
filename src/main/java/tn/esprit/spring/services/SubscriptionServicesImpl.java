@@ -4,6 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import tn.esprit.spring.entities.Skier;
 import tn.esprit.spring.entities.Subscription;
 import tn.esprit.spring.entities.TypeSubscription;
@@ -23,9 +26,25 @@ public class SubscriptionServicesImpl implements ISubscriptionServices{
 
     private ISkierRepository skierRepository;
 
+
+	@Override
+	public List<Subscription> retrieveAllSubscriptions() {
+        return (List<Subscription>) subscriptionRepository.findAll();
+	}
+
+    @Override
+    public String removeSubscription(Long numSub) {
+    	if (subscriptionRepository.existsById(numSub)) {
+                subscriptionRepository.deleteById(numSub);
+                return "Subscription deleted successfully";
+        } else {
+            return "Error: Subscription does not exist";
+        }
+    }
+    
     @Override
     public Subscription addSubscription(Subscription subscription) {
-        switch (subscription.getTypeSub()) {
+        switch ( subscription.getTypeSub() ) {
             case ANNUAL:
                 subscription.setEndDate(subscription.getStartDate().plusYears(1));
                 break;
@@ -58,9 +77,9 @@ public class SubscriptionServicesImpl implements ISubscriptionServices{
     public List<Subscription> retrieveSubscriptionsByDates(LocalDate startDate, LocalDate endDate) {
         return subscriptionRepository.getSubscriptionsByStartDateBetween(startDate, endDate);
     }
-
+    /*
     @Override
-    @Scheduled(cron = "*/30 * * * * *") /* Cron expression to run a job every 30 secondes */
+    @Scheduled(cron = "* /30 * * * * *") /* Cron expression to run a job every 30 secondes 
     public void retrieveSubscriptions() {
         for (Subscription sub: subscriptionRepository.findDistinctOrderByEndDateAsc()) {
             Skier   aSkier = skierRepository.findBySubscription(sub);
@@ -69,12 +88,13 @@ public class SubscriptionServicesImpl implements ISubscriptionServices{
         }
     }
 
-   // @Scheduled(cron = "* 0 9 1 * *") /* Cron expression to run a job every month at 9am */
-    @Scheduled(cron = "*/30 * * * * *") /* Cron expression to run a job every 30 secondes */
+   // @Scheduled(cron = "* 0 9 1 * *") /* Cron expression to run a job every month at 9am 
+    @Scheduled(cron = "* /30 * * * * *") /* Cron expression to run a job every 30 secondes 
     public void showMonthlyRecurringRevenue() {
         Float revenue = subscriptionRepository.recurringRevenueByTypeSubEquals(TypeSubscription.MONTHLY)
                 + subscriptionRepository.recurringRevenueByTypeSubEquals(TypeSubscription.SEMESTRIEL)/6
                 + subscriptionRepository.recurringRevenueByTypeSubEquals(TypeSubscription.ANNUAL)/12;
         log.info("Monthly Revenue = " + revenue);
     }
+    */
 }

@@ -4,6 +4,8 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import tn.esprit.spring.entities.Skier;
 import tn.esprit.spring.entities.Subscription;
 import tn.esprit.spring.entities.TypeSubscription;
 import tn.esprit.spring.services.ISubscriptionServices;
@@ -46,6 +48,18 @@ public class SubscriptionRestController {
     public List<Subscription> getSubscriptionsByDates(@PathVariable("date1") LocalDate startDate,
                                                       @PathVariable("date2") LocalDate endDate){
         return subscriptionServices.retrieveSubscriptionsByDates(startDate, endDate);
+    }
+
+    @Operation(description = "Delete Subscription by Id")
+    @DeleteMapping("/delete/{id-subscription}")
+    public String deleteById(@PathVariable("id-subscription") Long numSub){
+    	return subscriptionServices.removeSubscription(numSub);
+    }
+    
+    @Operation(description = "Retrieve all Subscriptions")
+    @GetMapping("/all")
+    public List<Subscription> getAllSkiers(){
+        return subscriptionServices.retrieveAllSubscriptions();
     }
 
 }
