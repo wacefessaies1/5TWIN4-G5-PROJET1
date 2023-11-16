@@ -1,15 +1,8 @@
 version: "3.8"
+
 services:
-  angular:
-    image: haifaarouri/instructor:angular
-    restart: always
-    ports:
-      - "80:80"
-    networks:
-      - network1
   db:
     image: mysql:8.0
-    restart: always
     environment:
       MYSQL_DATABASE: stationSki
       MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
@@ -36,10 +29,18 @@ services:
     stdin_open: true
     tty: true
     networks:
-      - network1 
-
+      - network1
+  angular:
+    image: haifaarouri/instructor:angular
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    networks:
+      - network1
+  
 volumes:
   db_data: {}
 networks:
   network1:
     driver: bridge
+
