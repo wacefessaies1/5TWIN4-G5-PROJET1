@@ -35,7 +35,7 @@ services:
     image: wacef96/angular
     restart: unless-stopped
     ports:
-      - 80:80
+      - 4200:4200
     networks:
       - networkwacef
   
