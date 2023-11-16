@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import tn.esprit.spring.entities.Skier;
@@ -22,8 +23,10 @@ import java.util.Set;
 @Service
 public class SubscriptionServicesImpl implements ISubscriptionServices{
 
+	@Autowired
     private ISubscriptionRepository subscriptionRepository;
 
+	@Autowired
     private ISkierRepository skierRepository;
     
     private static final Logger log = LoggerFactory.getLogger(SubscriptionServicesImpl.class);
@@ -75,11 +78,12 @@ public class SubscriptionServicesImpl implements ISubscriptionServices{
     }
 
    // @Scheduled(cron = "* 0 9 1 * *") /* Cron expression to run a job every month at 9am */
-    @Scheduled(cron = "*/30 * * * * *") /* Cron expression to run a job every 30 secondes */
-    public void showMonthlyRecurringRevenue() {
+    /* Cron expression to run a job every 30 secondes */
+    //@Scheduled(cron = "*/30 * * * * *")
+    /*public void showMonthlyRecurringRevenue() {
         Float revenue = subscriptionRepository.recurringRevenueByTypeSubEquals(TypeSubscription.MONTHLY)
                 + subscriptionRepository.recurringRevenueByTypeSubEquals(TypeSubscription.SEMESTRIEL)/6
                 + subscriptionRepository.recurringRevenueByTypeSubEquals(TypeSubscription.ANNUAL)/12;
         log.info("Monthly Revenue = " + revenue);
-    }
+    }*/
 }

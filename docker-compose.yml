@@ -5,7 +5,7 @@ services:
     restart: always
     environment:
       MYSQL_DATABASE: stationSki
-      MYSQL_ROOT_PASSWORD:
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
     ports:
       - "3307:3306"
     volumes:

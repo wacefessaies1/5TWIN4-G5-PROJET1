@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
-Built-By: Lenovo
-Build-Jdk: 17.0.7
+Built-By: haifa
+Build-Jdk: 17.0.8.1
 Implementation-Title: gestion-station-ski
 Implementation-Version: 1.0
 Implementation-Vendor-Id: tn.esprit.spring
