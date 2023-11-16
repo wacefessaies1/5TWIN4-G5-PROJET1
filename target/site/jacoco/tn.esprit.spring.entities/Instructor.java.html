@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Instructor.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">gestion-station-ski</a> &gt; <a href="index.source.html" class="el_package">tn.esprit.spring.entities</a> &gt; <span class="el_source">Instructor.java</span></div><h1>Instructor.java</h1><pre class="source lang-java linenums">package tn.esprit.spring.entities;
+
+import java.io.Serializable;
+import java.util.Date;
+import java.util.Set;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.experimental.FieldDefaults;
+@Getter
+@Setter
+@FieldDefaults(level=AccessLevel.PRIVATE)
+@Entity
+public class Instructor implements Serializable {
+	private static final long serialVersionUID = 1L;
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	Long numInstructor;
+	String firstName;
+	String lastName;
+	Date dateOfHire;
+	@OneToMany
+	Set&lt;Course&gt; courses;
+	
+	public Instructor() {
+<span class="fc" id="L33">		super();</span>
+<span class="fc" id="L34">	}</span>
+	public Instructor(String firstName, String lastName, Date dateOfHire, Set&lt;Course&gt; courses) {
+<span class="fc" id="L36">		super();</span>
+<span class="fc" id="L37">		this.firstName = firstName;</span>
+<span class="fc" id="L38">		this.lastName = lastName;</span>
+<span class="fc" id="L39">		this.dateOfHire = dateOfHire;</span>
+<span class="fc" id="L40">		this.courses = courses;</span>
+<span class="fc" id="L41">	}</span>
+	public Set&lt;Course&gt; getCourses() {
+<span class="nc" id="L43">		return courses;</span>
+	}
+	public void setCourses(Set&lt;Course&gt; courses) {
+<span class="nc" id="L46">		this.courses = courses;</span>
+<span class="nc" id="L47">	}</span>
+	public Long getNumInstructor() {
+<span class="nc" id="L49">		return numInstructor;</span>
+	}
+	public void setNumInstructor(Long numInstructor) {
+<span class="fc" id="L52">		this.numInstructor = numInstructor;</span>
+<span class="fc" id="L53">	}</span>
+	public String getFirstName() {
+<span class="fc" id="L55">		return firstName;</span>
+	}
+	public void setFirstName(String firstName) {
+<span class="nc" id="L58">		this.firstName = firstName;</span>
+<span class="nc" id="L59">	}</span>
+	public String getLastName() {
+<span class="nc" id="L61">		return lastName;</span>
+	}
+	public void setLastName(String lastName) {
+<span class="nc" id="L64">		this.lastName = lastName;</span>
+<span class="nc" id="L65">	}</span>
+	public Date getDateOfHire() {
+<span class="nc" id="L67">		return dateOfHire;</span>
+	}
+	public void setDateOfHire(Date dateOfHire) {
+<span class="nc" id="L70">		this.dateOfHire = dateOfHire;</span>
+<span class="nc" id="L71">	}</span>
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

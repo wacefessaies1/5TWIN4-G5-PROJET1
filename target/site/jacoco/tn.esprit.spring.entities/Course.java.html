@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Course.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">gestion-station-ski</a> &gt; <a href="index.source.html" class="el_package">tn.esprit.spring.entities</a> &gt; <span class="el_source">Course.java</span></div><h1>Course.java</h1><pre class="source lang-java linenums">package tn.esprit.spring.entities;
+
+import java.io.Serializable;
+import java.util.Set;
+
+import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.FieldDefaults;
+@Getter
+@Setter
+<span class="nc" id="L17">@AllArgsConstructor</span>
+<span class="fc" id="L18">@NoArgsConstructor</span>
+@FieldDefaults(level=AccessLevel.PRIVATE)
+@Entity
+public class Course implements Serializable {
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	Long numCourse;
+	int level;
+	@Enumerated(EnumType.STRING)
+	TypeCourse typeCourse;
+	@Enumerated(EnumType.STRING)
+	Support support;
+	Float price;
+	int timeSlot;
+
+	@JsonIgnore
+	@OneToMany(mappedBy= &quot;course&quot;)
+	Set&lt;Registration&gt; registrations;
+
+	public Long getNumCourse() {
+<span class="nc" id="L39">		return numCourse;</span>
+	}
+
+	public void setNumCourse(Long numCourse) {
+<span class="nc" id="L43">		this.numCourse = numCourse;</span>
+<span class="nc" id="L44">	}</span>
+
+	public int getLevel() {
+<span class="nc" id="L47">		return level;</span>
+	}
+
+	public void setLevel(int level) {
+<span class="nc" id="L51">		this.level = level;</span>
+<span class="nc" id="L52">	}</span>
+
+	public TypeCourse getTypeCourse() {
+<span class="nc" id="L55">		return typeCourse;</span>
+	}
+
+	public void setTypeCourse(TypeCourse typeCourse) {
+<span class="nc" id="L59">		this.typeCourse = typeCourse;</span>
+<span class="nc" id="L60">	}</span>
+
+	public Support getSupport() {
+<span class="nc" id="L63">		return support;</span>
+	}
+
+	public void setSupport(Support support) {
+<span class="nc" id="L67">		this.support = support;</span>
+<span class="nc" id="L68">	}</span>
+
+	public Float getPrice() {
+<span class="nc" id="L71">		return price;</span>
+	}
+
+	public void setPrice(Float price) {
+<span class="nc" id="L75">		this.price = price;</span>
+<span class="nc" id="L76">	}</span>
+
+	public int getTimeSlot() {
+<span class="nc" id="L79">		return timeSlot;</span>
+	}
+
+	public void setTimeSlot(int timeSlot) {
+<span class="nc" id="L83">		this.timeSlot = timeSlot;</span>
+<span class="nc" id="L84">	}</span>
+
+	public Set&lt;Registration&gt; getRegistrations() {
+<span class="nc" id="L87">		return registrations;</span>
+	}
+
+	public void setRegistrations(Set&lt;Registration&gt; registrations) {
+<span class="nc" id="L91">		this.registrations = registrations;</span>
+<span class="nc" id="L92">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

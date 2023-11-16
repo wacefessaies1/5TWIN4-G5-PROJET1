@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="fr"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Skier.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">gestion-station-ski</a> &gt; <a href="index.source.html" class="el_package">tn.esprit.spring.entities</a> &gt; <span class="el_source">Skier.java</span></div><h1>Skier.java</h1><pre class="source lang-java linenums">package tn.esprit.spring.entities;
+
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.Set;
+
+import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import lombok.AccessLevel;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.experimental.FieldDefaults;
+
+@Getter
+@Setter
+<span class="nc" id="L20">@AllArgsConstructor</span>
+<span class="fc" id="L21">@NoArgsConstructor</span>
+@FieldDefaults(level=AccessLevel.PRIVATE)
+@Entity
+public class Skier implements Serializable {
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	Long numSkier;
+	String firstName;
+	String lastName;
+	LocalDate dateOfBirth;
+	String city;
+
+	/*@OneToOne(cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	Subscription subscription;*/
+
+	@JsonIgnore
+	@ManyToMany
+	@JoinTable(
+			name = &quot;excursion&quot;,
+			joinColumns = @JoinColumn(name = &quot;numSkier&quot;),
+			inverseJoinColumns = @JoinColumn(name = &quot;numPiste&quot;))
+	private Set&lt;Piste&gt; pistes;
+
+	@OneToMany(mappedBy = &quot;skier&quot;)
+	Set&lt;Registration&gt; registrations;
+
+	public Long getNumSkier() {
+<span class="nc" id="L49">		return numSkier;</span>
+	}
+
+
+	public void setNumSkier(Long numSkier) {
+<span class="nc" id="L54">		this.numSkier = numSkier;</span>
+<span class="nc" id="L55">	}</span>
+
+
+	public String getFirstName() {
+<span class="nc" id="L59">		return firstName;</span>
+	}
+
+
+	public void setFirstName(String firstName) {
+<span class="nc" id="L64">		this.firstName = firstName;</span>
+<span class="nc" id="L65">	}</span>
+
+
+	public String getLastName() {
+<span class="nc" id="L69">		return lastName;</span>
+	}
+
+
+	public void setLastName(String lastName) {
+<span class="nc" id="L74">		this.lastName = lastName;</span>
+<span class="nc" id="L75">	}</span>
+
+
+	public LocalDate getDateOfBirth() {
+<span class="nc" id="L79">		return dateOfBirth;</span>
+	}
+
+
+	public void setDateOfBirth(LocalDate dateOfBirth) {
+<span class="nc" id="L84">		this.dateOfBirth = dateOfBirth;</span>
+<span class="nc" id="L85">	}</span>
+
+
+	public String getCity() {
+<span class="nc" id="L89">		return city;</span>
+	}
+
+
+	public void setCity(String city) {
+<span class="nc" id="L94">		this.city = city;</span>
+<span class="nc" id="L95">	}</span>
+
+
+	/*public Subscription getSubscription() {
+		return subscription;
+	}
+
+
+	public void setSubscription(Subscription subscription) {
+		this.subscription = subscription;
+	}*/
+
+
+	public Set&lt;Piste&gt; getPistes() {
+<span class="nc" id="L109">		return pistes;</span>
+	}
+
+
+	public void setPistes(Set&lt;Piste&gt; pistes) {
+<span class="nc" id="L114">		this.pistes = pistes;</span>
+<span class="nc" id="L115">	}</span>
+
+
+	public Set&lt;Registration&gt; getRegistrations() {
+<span class="nc" id="L119">		return registrations;</span>
+	}
+
+
+	public void setRegistrations(Set&lt;Registration&gt; registrations) {
+<span class="nc" id="L124">		this.registrations = registrations;</span>
+<span class="nc" id="L125">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>
