@@ -21,7 +21,6 @@ public class SkierServicesImpl implements ISkierServices {
 
     private IRegistrationRepository registrationRepository;
 
-    private ISubscriptionRepository subscriptionRepository;
 
 
     @Override
@@ -31,7 +30,7 @@ public class SkierServicesImpl implements ISkierServices {
 
     @Override
     public Skier addSkier(Skier skier) {
-        switch (skier.getSubscription().getTypeSub()) {
+        /*switch (skier.getSubscription().getTypeSub()) {
             case ANNUAL:
                 skier.getSubscription().setEndDate(skier.getSubscription().getStartDate().plusYears(1));
                 break;
@@ -42,14 +41,15 @@ public class SkierServicesImpl implements ISkierServices {
                 skier.getSubscription().setEndDate(skier.getSubscription().getStartDate().plusMonths(1));
                 break;
         }
-        return skierRepository.save(skier);
+        return skierRepository.save(skier);*/
+    	return null;
     }
 
     @Override
     public Skier assignSkierToSubscription(Long numSkier, Long numSubscription) {
         Skier skier = skierRepository.findById(numSkier).orElse(null);
-        Subscription subscription = subscriptionRepository.findById(numSubscription).orElse(null);
-        skier.setSubscription(subscription);
+        //Subscription subscription = subscriptionRepository.findById(numSubscription).orElse(null);
+        //skier.setSubscription(subscription);
         return skierRepository.save(skier);
     }
 
@@ -91,8 +91,8 @@ public class SkierServicesImpl implements ISkierServices {
         return skierRepository.save(skier);
     }
 
-    @Override
+    /*@Override
     public List<Skier> retrieveSkiersBySubscriptionType(TypeSubscription typeSubscription) {
         return skierRepository.findBySubscription_TypeSub(typeSubscription);
-    }
+    }*/
 }
