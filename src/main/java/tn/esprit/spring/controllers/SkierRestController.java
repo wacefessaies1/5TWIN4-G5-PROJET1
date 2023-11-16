@@ -42,11 +42,6 @@ public class SkierRestController {
                                @PathVariable("numPiste") Long numPiste){
         return skierServices.assignSkierToPiste(numSkier,numPiste);
     }
-    /*@Operation(description = "retrieve Skiers By Subscription Type")
-    @GetMapping("/getSkiersBySubscription")
-    public List<Skier> retrieveSkiersBySubscriptionType(TypeSubscription typeSubscription) {
-        return skierServices.retrieveSkiersBySubscriptionType(typeSubscription);
-    }*/
     @Operation(description = "Retrieve Skier by Id")
     @GetMapping("/get/{id-skier}")
     public Skier getById(@PathVariable("id-skier") Long numSkier){
