@@ -1,40 +1,37 @@
+
 version: "2.3.3"
 services:
-
-
-
-
-  mysql-db:
-    image: mysql:latest
-    container_name: devops-db
-    ports:
-      - "3306:3306"
-    restart: always
+  db:
+    image: mysql:8.0
     environment:
-      - MYSQL_ALLOW_EMPTY_PASSWORD=yes
-      - MYSQL_DATABASE=devops_project_db
+      MYSQL_DATABASE: stationSki
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
+    ports:
+      - "3307:3306"
     volumes:
-      - ./data.sql:/docker-entrypoint-initdb.d/data.sql
+      - db_data:/var/lib/mysql
     networks:
       - network1
-  
   spring:
     image: emnahammami/5twin4-g5-projet1:spring
-    restart: always
+    restart: on-failure
     ports:
       - "8089:8089"
     environment:
-      - SPRING_DATASOURCE_URL=jdbc:mysql://devops-db:3306/stationSki?&createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-      - SPRING_DATASOURCE_USERNAME=root
-      - SPRING_DATASOURCE_PASSWORD=
-  
+      SPRING_APPLICATION_JSON: '{
+              "spring.datasource.url"  : "jdbc:mysql://db:3306/stationSki?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC",
+              "spring.datasource.username" : "root",
+              "spring.datasource.password" : "",
+              "spring.jpa.hibernate.ddl-auto" : "update"
+            }'
     depends_on:
-      - mysql-db
+      - db
     stdin_open: true
     tty: true
     networks:
-      - network1 
+      - network1
 
+  
 volumes:
   db_data: {}
 networks:
