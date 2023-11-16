@@ -13,7 +13,7 @@ services:
     networks:
       - network-backend
   spring:
-    image: mariemfr99/mariemfraj-5TWIN4-G5-Projet1
+    image: mariemfr99/gestion-station-ski-1.0
     restart: on-failure
     ports:
       - "8089:8089"
