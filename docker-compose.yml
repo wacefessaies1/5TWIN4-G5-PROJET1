@@ -1,5 +1,12 @@
 version: "3.8"
 services:
+  angular:
+    image: haifaarouri/instructor:angular
+    restart: always
+    ports:
+      - "80:80"
+    networks:
+      - network1
   db:
     image: mysql:8.0
     restart: always
@@ -29,7 +36,7 @@ services:
     stdin_open: true
     tty: true
     networks:
-      - network1
+      - network1 
 
 volumes:
   db_data: {}
