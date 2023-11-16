@@ -30,8 +30,18 @@ services:
     tty: true
     networks:
       - networkwacef
+  angular:
+    build: ./devops-angular
+    image: wacef96/angular
+    restart: unless-stopped
+    ports:
+      - 80:80
+    networks:
+      - networkwacef
+  
 volumes:
   db_data: {}
 networks:
   networkwacef:
     driver: bridge
+

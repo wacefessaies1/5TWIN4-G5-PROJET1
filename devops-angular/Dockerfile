@@ -1,20 +1,18 @@
-# Stage 1: Build the Angular app
-FROM node:14 as build
+FROM node:16.20.2 AS build
 
-WORKDIR /usr/src/app
+WORKDIR /app
+RUN apt-get update
 
-COPY package*.json ./
-
+COPY package.json .
 RUN npm install
 
 COPY . .
-
 RUN npm run build --prod
 
-# Stage 2: Serve the Angular app using Nginx
-FROM nginx:alpine
+FROM nginx:latest
 
-COPY --from=build /usr/src/app/dist/your-app-name /usr/share/nginx/html
+COPY --from=build /app/dist /usr/share/nginx/html
+COPY default.conf /etc/nginx/conf.d
 
 EXPOSE 80
 
