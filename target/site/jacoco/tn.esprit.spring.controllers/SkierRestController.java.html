@@ -42,27 +42,22 @@ public class SkierRestController {
                                @PathVariable(&quot;numPiste&quot;) Long numPiste){
 <span class="nc" id="L43">        return skierServices.assignSkierToPiste(numSkier,numPiste);</span>
     }
-    /*@Operation(description = &quot;retrieve Skiers By Subscription Type&quot;)
-    @GetMapping(&quot;/getSkiersBySubscription&quot;)
-    public List&lt;Skier&gt; retrieveSkiersBySubscriptionType(TypeSubscription typeSubscription) {
-        return skierServices.retrieveSkiersBySubscriptionType(typeSubscription);
-    }*/
     @Operation(description = &quot;Retrieve Skier by Id&quot;)
     @GetMapping(&quot;/get/{id-skier}&quot;)
     public Skier getById(@PathVariable(&quot;id-skier&quot;) Long numSkier){
-<span class="nc" id="L53">        return skierServices.retrieveSkier(numSkier);</span>
+<span class="nc" id="L48">        return skierServices.retrieveSkier(numSkier);</span>
     }
 
     @Operation(description = &quot;Delete Skier by Id&quot;)
     @DeleteMapping(&quot;/delete/{id-skier}&quot;)
     public void deleteById(@PathVariable(&quot;id-skier&quot;) Long numSkier){
-<span class="nc" id="L59">        skierServices.removeSkier(numSkier);</span>
-<span class="nc" id="L60">    }</span>
+<span class="nc" id="L54">        skierServices.removeSkier(numSkier);</span>
+<span class="nc" id="L55">    }</span>
 
     @Operation(description = &quot;Retrieve all Skiers&quot;)
     @GetMapping(&quot;/all&quot;)
     public List&lt;Skier&gt; getAllSkiers(){
-<span class="nc" id="L65">        return skierServices.retrieveAllSkiers();</span>
+<span class="nc" id="L60">        return skierServices.retrieveAllSkiers();</span>
     }
 
 }

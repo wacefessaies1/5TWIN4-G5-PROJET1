@@ -30,70 +30,51 @@ public class SkierServicesImpl implements ISkierServices {
 
     @Override
     public Skier addSkier(Skier skier) {
-        /*switch (skier.getSubscription().getTypeSub()) {
-            case ANNUAL:
-                skier.getSubscription().setEndDate(skier.getSubscription().getStartDate().plusYears(1));
-                break;
-            case SEMESTRIEL:
-                skier.getSubscription().setEndDate(skier.getSubscription().getStartDate().plusMonths(6));
-                break;
-            case MONTHLY:
-                skier.getSubscription().setEndDate(skier.getSubscription().getStartDate().plusMonths(1));
-                break;
-        }
-        return skierRepository.save(skier);*/
-<span class="nc" id="L45">    	return null;</span>
+<span class="nc" id="L33">    	return null;</span>
     }
 
     @Override
     public Skier assignSkierToSubscription(Long numSkier, Long numSubscription) {
-<span class="nc" id="L50">        Skier skier = skierRepository.findById(numSkier).orElse(null);</span>
-        //Subscription subscription = subscriptionRepository.findById(numSubscription).orElse(null);
-        //skier.setSubscription(subscription);
-<span class="nc" id="L53">        return skierRepository.save(skier);</span>
+<span class="nc" id="L38">        Skier skier = skierRepository.findById(numSkier).orElse(null);</span>
+<span class="nc" id="L39">        return skierRepository.save(skier);</span>
     }
 
     @Override
     public Skier addSkierAndAssignToCourse(Skier skier, Long numCourse) {
-<span class="nc" id="L58">        Skier savedSkier = skierRepository.save(skier);</span>
-<span class="nc" id="L59">        Course course = courseRepository.getById(numCourse);</span>
-<span class="nc" id="L60">        Set&lt;Registration&gt; registrations = savedSkier.getRegistrations();</span>
-<span class="nc bnc" id="L61" title="All 2 branches missed.">        for (Registration r : registrations) {</span>
-<span class="nc" id="L62">            r.setSkier(savedSkier);</span>
-<span class="nc" id="L63">            r.setCourse(course);</span>
-<span class="nc" id="L64">            registrationRepository.save(r);</span>
-<span class="nc" id="L65">        }</span>
-<span class="nc" id="L66">        return savedSkier;</span>
+<span class="nc" id="L44">        Skier savedSkier = skierRepository.save(skier);</span>
+<span class="nc" id="L45">        Course course = courseRepository.getById(numCourse);</span>
+<span class="nc" id="L46">        Set&lt;Registration&gt; registrations = savedSkier.getRegistrations();</span>
+<span class="nc bnc" id="L47" title="All 2 branches missed.">        for (Registration r : registrations) {</span>
+<span class="nc" id="L48">            r.setSkier(savedSkier);</span>
+<span class="nc" id="L49">            r.setCourse(course);</span>
+<span class="nc" id="L50">            registrationRepository.save(r);</span>
+<span class="nc" id="L51">        }</span>
+<span class="nc" id="L52">        return savedSkier;</span>
     }
 
     @Override
     public void removeSkier(Long numSkier) {
-<span class="nc" id="L71">        skierRepository.deleteById(numSkier);</span>
-<span class="nc" id="L72">    }</span>
+<span class="nc" id="L57">        skierRepository.deleteById(numSkier);</span>
+<span class="nc" id="L58">    }</span>
 
     @Override
     public Skier retrieveSkier(Long numSkier) {
-<span class="nc" id="L76">        return skierRepository.findById(numSkier).orElse(null);</span>
+<span class="nc" id="L62">        return skierRepository.findById(numSkier).orElse(null);</span>
     }
 
     @Override
     public Skier assignSkierToPiste(Long numSkieur, Long numPiste) {
-<span class="nc" id="L81">        Skier skier = skierRepository.findById(numSkieur).orElse(null);</span>
-<span class="nc" id="L82">        Piste piste = pisteRepository.findById(numPiste).orElse(null);</span>
+<span class="nc" id="L67">        Skier skier = skierRepository.findById(numSkieur).orElse(null);</span>
+<span class="nc" id="L68">        Piste piste = pisteRepository.findById(numPiste).orElse(null);</span>
         try {
-<span class="nc" id="L84">            skier.getPistes().add(piste);</span>
-<span class="nc" id="L85">        } catch (NullPointerException exception) {</span>
-<span class="nc" id="L86">            Set&lt;Piste&gt; pisteList = new HashSet&lt;&gt;();</span>
-<span class="nc" id="L87">            pisteList.add(piste);</span>
-<span class="nc" id="L88">            skier.setPistes(pisteList);</span>
-<span class="nc" id="L89">        }</span>
+<span class="nc" id="L70">            skier.getPistes().add(piste);</span>
+<span class="nc" id="L71">        } catch (NullPointerException exception) {</span>
+<span class="nc" id="L72">            Set&lt;Piste&gt; pisteList = new HashSet&lt;&gt;();</span>
+<span class="nc" id="L73">            pisteList.add(piste);</span>
+<span class="nc" id="L74">            skier.setPistes(pisteList);</span>
+<span class="nc" id="L75">        }</span>
 
-<span class="nc" id="L91">        return skierRepository.save(skier);</span>
+<span class="nc" id="L77">        return skierRepository.save(skier);</span>
     }
-
-    /*@Override
-    public List&lt;Skier&gt; retrieveSkiersBySubscriptionType(TypeSubscription typeSubscription) {
-        return skierRepository.findBySubscription_TypeSub(typeSubscription);
-    }*/
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>
