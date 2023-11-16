@@ -9,7 +9,7 @@ import tn.esprit.spring.services.IPisteServices;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://192.168.81.128:4200")
 @Tag(name = "\uD83C\uDFBF Piste Management")
 @RestController
 @RequestMapping("/piste")
