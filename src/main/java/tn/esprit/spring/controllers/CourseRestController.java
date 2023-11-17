@@ -1,13 +1,32 @@
 package tn.esprit.spring.controllers;
 
 import io.swagger.v3.oas.annotations.Operation;
+
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import tn.esprit.spring.entities.Course;
+import tn.esprit.spring.entities.Registration;
+import tn.esprit.spring.entities.Support;
+import tn.esprit.spring.entities.TypeCourse;
 import tn.esprit.spring.services.ICourseServices;
 
 import java.util.List;
+import java.util.Set;
+
+
+class CourseDTO{
+	Long numCourse;
+	int level;
+	TypeCourse typeCourse;
+	Support support;
+	Float price;
+	int timeSlot;
+	Set<Registration> registrations;
+}
 
 @Tag(name = "\uD83D\uDCDA Course Management")
 @RestController
@@ -19,14 +38,14 @@ public class CourseRestController {
 
     @Operation(description = "Add Course")
     @PostMapping("/add")
-    public Course addCourse(@RequestBody Course course){
+    public Course addCourse(@RequestBody CourseDTO course){
     	Course c = new Course();
-    	c.setNumCourse(course.getNumCourse());
-    	c.setLevel(course.getLevel());
-    	c.setPrice(course.getPrice());
-    	c.setRegistrations(null);
-    	c.setSupport(null);
-    	c.setTypeCourse(course.getTypeCourse());
+    	c.setNumCourse(course.numCourse);
+    	c.setLevel(course.level);
+    	c.setPrice(course.price);
+    	c.setRegistrations(course.registrations);
+    	c.setSupport(course.support);
+    	c.setTypeCourse(course.typeCourse);
         return  courseServices.addCourse(c);
     }
 
