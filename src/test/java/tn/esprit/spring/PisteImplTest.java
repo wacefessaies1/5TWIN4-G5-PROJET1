@@ -15,14 +15,14 @@ import tn.esprit.spring.services.IPisteServices;
 
 @SpringBootTest
 @TestMethodOrder(org.junit.jupiter.api.MethodOrderer.OrderAnnotation.class)
-public class PisteImplTest {
+class PisteImplTest {
 	
 	@Autowired
 	IPisteServices ps;
 	
 	@Test
 	@Order(0)
-	public void testAjouterPiste() {
+	void testAjouterPiste() {
 	    Piste piste = new Piste(null, "piste", Color.RED, 1, 2, null);
 		piste = ps.addPiste(piste);
         Assertions.assertNotNull(piste);
@@ -30,7 +30,7 @@ public class PisteImplTest {
 	}
 	@Test
 	@Order(1)
-	public void testRetrieveByIdPiste() {
+	void testRetrieveByIdPiste() {
 	    Piste piste = new Piste(null, "piste", Color.RED, 1, 2, null);
 		piste = ps.addPiste(piste);
 		Piste retrievedPiste = ps.retrievePiste(piste.getNumPiste());
@@ -40,7 +40,7 @@ public class PisteImplTest {
 	
 	@Test
 	@Order(2)
-	public void testRetriveAllPistes() {
+	void testRetriveAllPistes() {
 		Piste piste = ps.addPiste(new Piste(null, "piste", Color.RED, 1, 2, null));
 		List<Piste> listPistes = ps.retrieveAllPistes();
 		Assertions.assertEquals(1, listPistes.size());
@@ -56,7 +56,7 @@ public class PisteImplTest {
 	
 	@Test
 	@Order(4)
-	public void testRetriveAllPistesAfterDeletion() {
+	void testRetriveAllPistesAfterDeletion() {
 		List<Piste> listPistes = ps.retrieveAllPistes();
 		Assertions.assertEquals(0, listPistes.size());
 	}

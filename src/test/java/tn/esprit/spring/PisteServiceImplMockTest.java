@@ -23,7 +23,7 @@ import tn.esprit.spring.services.PisteServicesImpl;
 
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)
-public class PisteServiceImplMock {
+class PisteServiceImplMockTest {
 
 	@Mock
 	IPisteRepository iPisteRepository;
@@ -34,14 +34,14 @@ public class PisteServiceImplMock {
     Piste piste = new Piste(null, "piste 1", Color.RED, 1, 2, null);
     @Test
     @Order(0)
-    public void testAddInstructor() {
+    void testAddInstructor() {
         Mockito.when(iPisteRepository.save(Mockito.any(Piste.class))).thenReturn(piste);
         Piste savedPiste = iPisteRepository.save(piste);
         Assertions.assertEquals(savedPiste.getNumPiste(), piste.getNumPiste());
     }
     @Test
     @Order(1)
-    public void testRetrievePiste() {
+    void testRetrievePiste() {
         Mockito.when(iPisteRepository.findById(anyLong())).thenReturn(Optional.of(piste));
         Piste piste1 = pistesService.retrievePiste((long)1);
         Assertions.assertNotNull(piste1);
@@ -49,7 +49,7 @@ public class PisteServiceImplMock {
     }
     @Test
     @Order(2)
-    public void testRetrieveAllInstructors() {
+    void testRetrieveAllInstructors() {
         List<Piste> mockList = new ArrayList<>();
         mockList.add(piste);
         Mockito.when(iPisteRepository.findAll()).thenReturn(mockList);
