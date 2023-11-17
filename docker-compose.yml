@@ -12,7 +12,7 @@ services:
     networks:
       - network
   spring:
-    image: iheb12345/IhebBENHELEL-5twin4-g5-projet1:spring
+    image: iheb12345/ihebbenhelel-5twin4-g5-projet1:spring
     restart: on-failure
     ports:
       - "8089:8089"
