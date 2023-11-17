@@ -13,7 +13,7 @@ services:
     networks:
       - network
   spring:
-    image: emma1111/5twin4-g5-projet1:spring
+    image: emnahammami/5twin4-g5-projet1:spring
     restart: on-failure
     ports:
       - "8089:8089"
