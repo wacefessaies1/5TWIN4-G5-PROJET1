@@ -1,5 +1,5 @@
 
-version: "2.3.3"
+version: "2.21.0"
 services:
   db:
     image: mysql:8.0
