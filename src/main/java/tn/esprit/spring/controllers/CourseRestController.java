@@ -55,8 +55,15 @@ public class CourseRestController {
 
     @Operation(description = "Update Course ")
     @PutMapping("/update")
-    public Course updateCourse(@RequestBody Course course){
-        return  courseServices.updateCourse(course);
+    public Course updateCourse(@RequestBody CourseDTO course){
+    	Course c = new Course();
+    	c.setNumCourse(course.numCourse);
+    	c.setLevel(course.level);
+    	c.setPrice(course.price);
+    	c.setRegistrations(course.registrations);
+    	c.setSupport(course.support);
+    	c.setTypeCourse(course.typeCourse);
+        return  courseServices.updateCourse(c);
     }
 
     @Operation(description = "Retrieve Course by Id")
