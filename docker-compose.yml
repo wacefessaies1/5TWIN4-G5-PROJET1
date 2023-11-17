@@ -11,7 +11,7 @@ services:
     volumes:
       - db_data:/var/lib/mysql
     networks:
-      - network1
+      - network
   spring:
     image: emma1111/5twin4-g5-projet1:spring
     restart: on-failure
@@ -29,11 +29,11 @@ services:
     stdin_open: true
     tty: true
     networks:
-      - network1
+      - network
 
   
 volumes:
   db_data: {}
 networks:
-  network1:
+  network:
     driver: bridge
