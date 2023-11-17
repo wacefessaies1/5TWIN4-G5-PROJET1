@@ -49,9 +49,10 @@ class PisteImplTest {
 	
 	@Test
 	@Order(3)
-	public void testRemovePiste() {
+	void testRemovePiste() {
 		Piste piste = ps.addPiste(new Piste(null, "piste", Color.RED, 1, 2, null));
 		ps.removePiste(piste.getNumPiste());
+		Assertions.assertNotNull(piste);
 	}
 	
 	@Test
