@@ -6,8 +6,6 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import tn.esprit.spring.entities.Course;
 import tn.esprit.spring.entities.Registration;
 import tn.esprit.spring.entities.Support;
