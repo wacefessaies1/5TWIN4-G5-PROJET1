@@ -26,7 +26,7 @@ import tn.esprit.spring.repositories.ISkierRepository;
 import tn.esprit.spring.repositories.ISubscriptionRepository;
 @SpringBootTest
 @ExtendWith(MockitoExtension.class)
-public class SubscriptionServicesImplTest {
+class SubscriptionServicesImplTest {
 
     @Mock
     private ISubscriptionRepository subscriptionRepository;
@@ -38,7 +38,7 @@ public class SubscriptionServicesImplTest {
     private SubscriptionServicesImpl subscriptionService;
 
     @Test
-    public void testRetrieveAllSubscriptions() {
+    void testRetrieveAllSubscriptions() {
 
 		LocalDate startDate = LocalDate.of(2010, 10, 10);
 		LocalDate endDate = LocalDate.of(2011, 11, 11);
@@ -56,7 +56,7 @@ public class SubscriptionServicesImplTest {
     }
     
     @Test
-    public void testAddSubscription() {
+    void testAddSubscription() {
 
         LocalDate startDate = LocalDate.of(2010, 10, 10);
 		LocalDate endDate = LocalDate.of(2011, 11, 11);
@@ -70,7 +70,7 @@ public class SubscriptionServicesImplTest {
     }
     
     @Test
-    public void testRetrieveSubscriptionById() {
+    void testRetrieveSubscriptionById() {
         long subscriptionId = 1L;
         Subscription subscription = new Subscription();
         subscription.setNumSub(subscriptionId);
@@ -81,7 +81,7 @@ public class SubscriptionServicesImplTest {
     }
     
     @Test
-    public void testRetrieveSubscriptionByType() {
+    void testRetrieveSubscriptionByType() {
 
     	TypeSubscription subscriptionType = TypeSubscription.ANNUAL;
         LocalDate startDate = LocalDate.of(2010, 10, 10);
