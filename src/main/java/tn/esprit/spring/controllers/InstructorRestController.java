@@ -48,7 +48,7 @@ public class InstructorRestController {
 
     @Operation(description = "Update Instructor ")
     @PutMapping("/update")
-    public Instructor updateInstructor(@RequestBody InstructorDTO Instructor){
+    public Instructor updateInstructor(@RequestBody InstructorDTO instructor){
     	Instructor i = new Instructor();
         return  instructorServices.updateInstructor(i);
     }
