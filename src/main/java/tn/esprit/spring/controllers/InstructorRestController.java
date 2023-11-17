@@ -36,8 +36,9 @@ public class InstructorRestController {
     }
     @Operation(description = "Add Instructor and Assign To Course")
     @PutMapping("/addAndAssignToCourse/{numCourse}")
-    public Instructor addAndAssignToInstructor(@RequestBody Instructor instructor, @PathVariable("numCourse")Long numCourse){
-        return  instructorServices.addInstructorAndAssignToCourse(instructor,numCourse);
+    public Instructor addAndAssignToInstructor(@RequestBody InstructorDTO instructor, @PathVariable("numCourse")Long numCourse){
+    	Instructor i = new Instructor();
+    	return  instructorServices.addInstructorAndAssignToCourse(i,numCourse);
     }
     @Operation(description = "Retrieve all Instructors")
     @GetMapping("/all")
@@ -47,7 +48,7 @@ public class InstructorRestController {
 
     @Operation(description = "Update Instructor ")
     @PutMapping("/update")
-    public Instructor updateInstructor(@RequestBody Instructor Instructor){
+    public Instructor updateInstructor(@RequestBody InstructorDTO Instructor){
     	Instructor i = new Instructor();
         return  instructorServices.updateInstructor(i);
     }
