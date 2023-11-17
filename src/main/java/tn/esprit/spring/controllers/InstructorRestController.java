@@ -13,8 +13,6 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
 
-import javax.persistence.OneToMany;
-
 class InstructorDTO{
 	Long numInstructor;
 	String firstName;

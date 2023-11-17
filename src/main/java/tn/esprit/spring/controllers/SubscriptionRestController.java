@@ -11,7 +11,13 @@ import tn.esprit.spring.services.ISubscriptionServices;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Set;
-
+class SubscriptionDTO{
+	Long numSub;
+	LocalDate startDate;
+	LocalDate endDate;
+	Float price;
+	TypeSubscription typeSub;
+}
 @Tag(name = "\uD83D\uDC65 Subscription Management")
 @RestController
 @RequestMapping("/subscription")
@@ -22,8 +28,9 @@ public class SubscriptionRestController {
 
     @Operation(description = "Add Subscription ")
     @PostMapping("/add")
-    public Subscription addSubscription(@RequestBody Subscription subscription){
-        return  subscriptionServices.addSubscription(subscription);
+    public Subscription addSubscription(@RequestBody SubscriptionDTO subscription){
+    	Subscription s = new Subscription();
+        return  subscriptionServices.addSubscription(s);
     }
     @Operation(description = "Retrieve Subscription by Id")
     @GetMapping("/get/{id-subscription}")
@@ -38,8 +45,9 @@ public class SubscriptionRestController {
     }
     @Operation(description = "Update Subscription ")
     @PutMapping("/update")
-    public Subscription updateSubscription(@RequestBody Subscription subscription){
-        return  subscriptionServices.updateSubscription(subscription);
+    public Subscription updateSubscription(@RequestBody SubscriptionDTO subscription){
+    	Subscription s = new Subscription();
+        return  subscriptionServices.updateSubscription(s);
     }
     @Operation(description = "Retrieve Subscriptions created between two dates")
     @GetMapping("/all/{date1}/{date2}")

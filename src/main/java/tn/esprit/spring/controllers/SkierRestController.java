@@ -4,12 +4,29 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
+
+import tn.esprit.spring.entities.Piste;
+import tn.esprit.spring.entities.Registration;
 import tn.esprit.spring.entities.Skier;
+import tn.esprit.spring.entities.Subscription;
 import tn.esprit.spring.entities.TypeSubscription;
 import tn.esprit.spring.services.ISkierServices;
 
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Set;
 
+class SkierDTO{
+	Long numSkier;
+	String firstName;
+	String lastName;
+	LocalDate dateOfBirth;
+	String city;
+	Subscription subscription;
+	Set<Piste> pistes;
+	Set<Registration> registrations;
+}
 @Tag(name = "\uD83C\uDFC2 Skier Management")
 @RestController
 @RequestMapping("/skier")
@@ -20,8 +37,9 @@ public class SkierRestController {
 
     @Operation(description = "Add Skier")
     @PostMapping("/add")
-    public Skier addSkier(@RequestBody Skier skier){
-        return  skierServices.addSkier(skier);
+    public Skier addSkier(@RequestBody SkierDTO skier){
+    	Skier s = new Skier();
+        return  skierServices.addSkier(s);
     }
 
     @Operation(description = "Add Skier And Assign To Course")
