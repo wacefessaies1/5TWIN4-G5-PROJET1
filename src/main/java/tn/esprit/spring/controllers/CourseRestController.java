@@ -20,7 +20,14 @@ public class CourseRestController {
     @Operation(description = "Add Course")
     @PostMapping("/add")
     public Course addCourse(@RequestBody Course course){
-        return  courseServices.addCourse(course);
+    	Course c = new Course();
+    	c.setNumCourse(course.getNumCourse());
+    	c.setLevel(course.getLevel());
+    	c.setPrice(course.getPrice());
+    	c.setRegistrations(null);
+    	c.setSupport(null);
+    	c.setTypeCourse(course.getTypeCourse());
+        return  courseServices.addCourse(c);
     }
 
     @Operation(description = "Retrieve all Courses")
