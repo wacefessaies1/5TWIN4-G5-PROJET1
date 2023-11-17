@@ -2,7 +2,6 @@ package tn.esprit.spring.entities;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -23,6 +22,10 @@ import lombok.experimental.FieldDefaults;
 @Entity
 public class Skier implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	Long numSkier;
