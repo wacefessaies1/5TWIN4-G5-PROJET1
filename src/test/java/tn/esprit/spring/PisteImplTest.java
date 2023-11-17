@@ -24,9 +24,15 @@ class PisteImplTest {
 	@Order(0)
 	void testAjouterPiste() {
 	    Piste piste = new Piste(null, "piste", Color.RED, 1, 2, null);
-		piste = ps.addPiste(piste);
-        Assertions.assertNotNull(piste);
-        ps.removePiste(piste.getNumPiste());
+	    Piste p = new Piste();
+    	p.setColor(Color.RED);
+    	p.setLength(1);
+    	p.setNamePiste("piste");
+    	p.setSkiers(null);
+    	p.setSlope(2);
+		Piste result = ps.addPiste(piste);
+		Assertions.assertEquals(piste, result);
+        ps.removePiste(result.getNumPiste());
 	}
 	@Test
 	@Order(1)
