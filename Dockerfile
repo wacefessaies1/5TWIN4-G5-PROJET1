@@ -1,4 +1,4 @@
-FROM maven:3.8.7-openjdk-8 AS builder
+FROM maven:3.8.7-openjdk-11 AS builder
 WORKDIR /app
 COPY pom.xml .
 RUN --mount=type=cache,target=/root/.m2 mvn dependency:go-offline
